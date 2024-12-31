@@ -201,7 +201,7 @@ class _MyHomePageState extends State<MyHomePage> {
         quizCategories: data,
         primaryColor: Colors.orange.shade300,
         //menuLogoPath: 'assets/images/logo.png',
-        menuLogoPath: 'assets/images/logo.png',
+        menuLogoPath: 'assets/images/game_logo.png',
         buttonPath: 'assets/images/primary_button.png',
         labelPath: 'assets/images/label.png',
         bgImagePath: 'assets/images/bg.png',
