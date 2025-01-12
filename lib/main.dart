@@ -1,11 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:easy_quiz_game/easy_quiz_game.dart';
+import 'package:quizgame/socket_service.dart';
 void main() {
-  runApp(const MyApp());
+  final socketService = SocketService();
+  socketService.connect();
+
+  runApp(MyApp(socketService: socketService));
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+
+  final SocketService socketService;
+  const MyApp({Key? key, required this.socketService});
+
+  //const MyApp({super.key});
 
   // This widget is the root of your application.
   @override
@@ -196,6 +204,28 @@ class _MyHomePageState extends State<MyHomePage> {
               difficulty: QuizDifficulty.hard),
         ],
       ),
+      QuizCategory(
+          name: 'History',
+          description: 'General knowlegde of history',
+          iconImage: 'assets/images/history.jpeg',
+          difficulty: QuizDifficulty.easy,
+          quizzes: [
+            Quiz(
+                question: 'When did World War 2 happen?',
+                options: ['1930', '1935', '1939', '1945'],
+                correctIndex: 2,
+                hint: 'After 1935',
+                questionType: QuizQuestionType.text,
+                difficulty: QuizDifficulty.hard),
+            Quiz(
+                question: 'When did World War 2 happen?',
+                options: ['1930', '1935', '1939', '1945'],
+                correctIndex: 2,
+                hint: 'After 1935',
+                questionType: QuizQuestionType.text,
+                difficulty: QuizDifficulty.hard),
+          ],
+      )
     ];
     return EasyQuizGameApp(
         quizCategories: data,
