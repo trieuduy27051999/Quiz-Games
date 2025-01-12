@@ -37,7 +37,7 @@ class GameplayProvider with ChangeNotifier {
     isAnswerPressed = false;
     completedCount = 0;
     e.quizzes.shuffle();
-    categoryQuizzes = e.quizzes.take(3).toList();
+    categoryQuizzes = e.quizzes.take(5).toList();
     Navigator.of(context)
         .pushReplacement(FullScreenModal(body: const LevelProgressDialog()));
   }
@@ -58,9 +58,22 @@ class GameplayProvider with ChangeNotifier {
     final correctAnswer = currentQuiz?.options[currentQuiz.correctIndex];
     if (selectedAnswer != correctAnswer) {
       AudioManager.instance.playWrongAnswer();
-      levelEnd(context);
+      //levelEnd(context);
+      completedCount++;
+      if (completedCount < categoryQuizzes!.length) {
+        Future.delayed(
+            duration,
+                () => Navigator.of(context).pushReplacement(
+                FullScreenModal(body: const LevelProgressDialog())));
+      } else {
+        Future.delayed(
+            duration,
+                () => Navigator.pushReplacementNamed(
+                context, LevelCompleteScreen.routeName));
+      }
     } else {
       completedCount++;
+      coins+=10;
       AudioManager.instance.playCorrectAnswer();
       if (completedCount < categoryQuizzes!.length) {
         Future.delayed(
@@ -77,8 +90,8 @@ class GameplayProvider with ChangeNotifier {
   }
 
   void earnReward() {
-    diamonds += 50;
-    coins += 200;
+    // diamonds += 50;
+    // coins += 200;
     Prefs.instance.updateDiamonds(diamonds);
     Prefs.instance.updateCoins(coins);
     notifyListeners();

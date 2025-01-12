@@ -47,19 +47,19 @@ class LevelFailedScreen extends StatelessWidget {
                   AudioManager.instance.playButtonTap();
                   Navigator.popUntil(context, (route) => route.isFirst);
                 }),
-            Badge(
-                label: Row(
-                  children: [
-                    const Image(
-                      image: AssetImage('assets/images/diamond.png'),
-                      height: 15,
-                    ),
-                    Text('20', style: Theme.of(context).textTheme.bodySmall),
-                  ],
-                ),
-                child: FramedButton(
-                    title: 'CONTINUE',
-                    onPress: () => provider.continueOnLevelFailed(context))),
+            // Badge(
+            //     label: Row(
+            //       children: [
+            //         const Image(
+            //           image: AssetImage('assets/images/diamond.png'),
+            //           height: 15,
+            //         ),
+            //         Text('20', style: Theme.of(context).textTheme.bodySmall),
+            //       ],
+            //     ),
+            //     child: FramedButton(
+            //         title: 'CONTINUE',
+            //         onPress: () => provider.continueOnLevelFailed(context))),
             const Spacer(),
           ],
         ),

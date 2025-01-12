@@ -53,23 +53,23 @@ class LevelProgressDialog extends StatelessWidget {
                   child: Column(
                     children: [
                       const SizedBox(height: 40),
-                      Row(
-                        children: const [
-                          Expanded(
-                            child: Image(
-                              image: AssetImage('assets/images/box.png'),
-                            ),
-                          ),
-                          SizedBox(width: 20),
-                          Icon(Icons.add),
-                          SizedBox(width: 20),
-                          Expanded(
-                            child: Image(
-                              image: AssetImage('assets/images/diamond.png'),
-                            ),
-                          ),
-                        ],
-                      ),
+                      // Row(
+                      //   children: const [
+                      //     Expanded(
+                      //       child: Image(
+                      //         image: AssetImage('assets/images/box.png'),
+                      //       ),
+                      //     ),
+                      //     SizedBox(width: 20),
+                      //     Icon(Icons.add),
+                      //     SizedBox(width: 20),
+                      //     Expanded(
+                      //       child: Image(
+                      //         image: AssetImage('assets/images/diamond.png'),
+                      //       ),
+                      //     ),
+                      //   ],
+                      // ),
                       const SizedBox(height: 20),
                       Column(children: List.from(questionList.reversed)),
                       const SizedBox(height: 20),

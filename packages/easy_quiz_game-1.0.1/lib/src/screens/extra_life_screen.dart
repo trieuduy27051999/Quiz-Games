@@ -23,33 +23,33 @@ class ExtraLifeScreen extends StatelessWidget {
         padding: const EdgeInsets.all(20),
         child: Column(
           children: [
-            const Image(
-              image: AssetImage('assets/images/life.png'),
-              height: 50,
-            ),
+            // const Image(
+            //   image: AssetImage('assets/images/life.png'),
+            //   height: 50,
+            // ),
             const SizedBox(height: 40),
-            Text(
-              'Use your extra life and receive a new question',
-              textAlign: TextAlign.center,
-              style: Theme.of(context).textTheme.titleLarge,
-            ),
+            // Text(
+            //   'Use your extra life and receive a new question',
+            //   textAlign: TextAlign.center,
+            //   style: Theme.of(context).textTheme.titleLarge,
+            // ),
             const Spacer(),
-            const Image(
-              image: AssetImage('assets/images/extra_life.png'),
-            ),
+            // const Image(
+            //   image: AssetImage('assets/images/extra_life.png'),
+            // ),
             const Spacer(),
-            FramedButton(
-                title: 'USE EXTRA LIFE',
-                onPress: () {
-                  EasyQuizGameController.of(context)
-                      .onTapEvent
-                      ?.call(context, QuizEventAction.continueWithGems);
-                  context.read<GameplayProvider>().isAnswerPressed = false;
-                  Prefs.instance.setLastLifeUsedTime();
-                  AudioManager.instance.playButtonTap();
-                  Navigator.pushReplacementNamed(
-                      context, QuizGameplayScreen.routeName);
-                }),
+            // FramedButton(
+            //     title: 'USE EXTRA LIFE',
+            //     onPress: () {
+            //       EasyQuizGameController.of(context)
+            //           .onTapEvent
+            //           ?.call(context, QuizEventAction.continueWithGems);
+            //       context.read<GameplayProvider>().isAnswerPressed = false;
+            //       Prefs.instance.setLastLifeUsedTime();
+            //       AudioManager.instance.playButtonTap();
+            //       Navigator.pushReplacementNamed(
+            //           context, QuizGameplayScreen.routeName);
+            //     }),
             const SizedBox(height: 10),
             FramedButton(
                 title: 'END QUIZ',

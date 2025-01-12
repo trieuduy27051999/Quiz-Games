@@ -1,4 +1,5 @@
 import 'package:easy_quiz_game/src/models/enums.dart';
+import 'dart:convert';
 
 class QuizCategory {
   final String name;
@@ -14,6 +15,21 @@ class QuizCategory {
     required this.difficulty,
     required this.quizzes,
   });
+
+  factory QuizCategory.fromJson(Map<String, dynamic> json) {
+    var quizzesJson = json['quizzes'] as List;
+    List<Quiz> quizzesList = quizzesJson.map((quizJson) => Quiz.fromJson(quizJson)).toList();
+
+    return QuizCategory(
+      name: json['name'] as String,
+      description: json['description'] as String,
+      iconImage: json['iconImage'] as String,
+      difficulty: QuizDifficulty.values.firstWhere(
+            (e) => e.toString() == 'QuizDifficulty.' + json['difficulty'],
+      ),
+      quizzes: quizzesList,
+    );
+  }
 }
 
 class Quiz {
@@ -32,4 +48,20 @@ class Quiz {
     required this.questionType,
     required this.difficulty,
   });
+
+  factory Quiz.fromJson(Map<String, dynamic> json) {
+    return Quiz(
+      question: json['question'] as String,
+      options: List<String>.from(json['options']),
+      correctIndex: json['correctIndex'] as int,
+      hint: json['hint'] as String,
+      questionType: QuizQuestionType.values.firstWhere(
+            (e) => e.toString() == 'QuizQuestionType.' + json['questionType'],
+      ),
+      difficulty: QuizDifficulty.values.firstWhere(
+            (e) => e.toString() == 'QuizDifficulty.' + json['difficulty'],
+      ),
+    );
+  }
 }
+
