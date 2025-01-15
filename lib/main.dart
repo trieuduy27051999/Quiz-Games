@@ -39,7 +39,7 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   Future<List<QuizCategory>> fetchQuizCategories() async {
     final response =
-        await http.get(Uri.parse('https://vou.tuan-anh-sd.software/quiz-set'));
+        await http.get(Uri.parse('https://game.tuan-anh-sd.software/quiz-set'));
 
     if (response.statusCode == 200) {
       final List<dynamic> data = json.decode(response.body)['data'];
@@ -66,7 +66,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
   Future<List<Quiz>> fetchQuizzes(String categoryId) async {
     final response = await http.get(Uri.parse(
-        'https://vou.tuan-anh-sd.software/quiz-set/$categoryId/questions'));
+        'https://game.tuan-anh-sd.software/quiz-set/$categoryId/questions'));
 
     if (response.statusCode == 200) {
       final List<dynamic> data = json.decode(response.body)['data'];
